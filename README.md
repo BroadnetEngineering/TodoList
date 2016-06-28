@@ -8,7 +8,6 @@ As a potential employee of Broadnet we would like to be able to gauge your progr
 * You are free to use what you like for any frontend portion of your app.
 * If you use a database to store app data, it must be MySQL and you must provide a SQL script to create the schema as part of your pull request.
 * Your app must support creating, reading, updating, and deleting of todo list items.
-* We're looking for something that takes you a couple hours, but no more than 3 or 4.
 
 ##### Tips
 
