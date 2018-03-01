@@ -1,0 +1,47 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="public/js/app.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <link rel="stylesheet" href="public/css/TodoList.css">
+
+    <title>Broadnet TodoList 1000</title>
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <div class="container logo" align="center" >
+        <img class="logo" src="public/img/BroadnetLogo.png" width="250" />
+        <em>To-do Lister T-1000</em>
+    </div>
+    <div class="container">
+        <div id="addItemContainer">
+            <input type="text" id="addItem" placeholder="Add a to-do item..." />
+        </div>
+    </div>
+
+    <div class="container" id="todos">
+
+    </div>
+
+    <div class="container hidden" id="lineItemTemplate">
+        <div class="listItemContainer">
+            <input type="checkbox" class="toggle-completed" name="toggle-completed" itemid="ITEMID" onchange="toggleCompleted(ITEMID)" checked>
+            <div class="item-text" itemid="ITEMID">[ITEM-TEXT]</div>
+            <div class="action edit" itemid="ITEMID">
+                <i class="fas fa-edit" onclick="editItem(ITEMID)"></i>
+            </div>
+            <div class="action delete" itemid="ITEMID">
+                <i class="fas fa-trash" onclick="deleteItem(ITEMID)"></i>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+
+</html>

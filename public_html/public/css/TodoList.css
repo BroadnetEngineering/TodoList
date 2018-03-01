@@ -1,0 +1,82 @@
+body {
+    font-family: "Roboto",sans-serif;
+    background-color: #DDDDDD;
+    /*background-color: #f7f7f7;*/
+}
+
+#wrapper {
+    /*background-color: aqua;*/
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 50px;
+}
+
+#container {
+    display: flex;
+    justify-content: sp;
+}
+
+p {
+    color: #939393;
+    background-color: orange;
+}
+
+#addItemContainer {
+    flex: 1;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #203763;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.edit {
+    margin-right: 20px;
+}
+
+#addItem {
+    font-size: 1.6em;
+    width: 100%;
+    padding-left: 4px;
+    background-color: #203763;
+    border: 0;
+    caret-color: #FFFFFF;
+    color: #FFFFFF;
+}
+
+.action {
+}
+
+.listItemContainer {
+    display: flex;
+    padding: 15px;
+    margin-bottom: 2px;
+    background-color: #2668AB;
+    border-radius: 4px;
+}
+
+.item-text {
+    flex-grow: 1;
+}
+
+.logo {
+    color: #203763;
+}
+
+.item-text {
+    margin-left: 10px;
+    color: #DDDDDD;
+}
+
+.fa-trash, .fa-edit {
+    color: #DDDDDD;
+}
+
+.hidden {
+    display: none;
+}
+
+.crossout {
+    text-decoration: line-through;
+}
