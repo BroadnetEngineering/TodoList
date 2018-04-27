@@ -3,15 +3,9 @@
     "description": "Code challenge 'To-Do' forked from https://github.com/BroadnetEngineering/TodoList",
     "type": "project",
     "require": {
-        "phpunit/phpunit": "^7.1",
         "monolog/monolog": "^1.23",
-        "phpunit/phpunit-mock-objects": "^6.1",
         "twig/twig": "^2.0",
         "slim/slim": "^3.0",
-        "doctrine/dbal": "^2.8@dev",
-        "doctrine/coding-standard": "^3.0@dev",
-        "symfony/console": "^4.1@dev",
-        "symfony/phpunit-bridge": "^4.1@dev",
         "slim/twig-view": "dev-master",
         "slim/csrf": "dev-master",
         "components/backbone": "dev-master"
