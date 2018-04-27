@@ -88,13 +88,13 @@ $(function () {
   // To-do Item View
   // --------------
 
-  // The to-do item is matched
+  // The to-do item is matched...
   app.TodoView = Backbone.View.extend({
 
-    //...to DOM element for a list tag.
+    //...to the DOM element for a list tag.
     tagName:  'li',
 
-    // Cache the template function for a single item.
+    // Define the template function for a single item.
     template: _.template($('#item-template').html()),
 
     // The DOM events specific to an item.
@@ -107,17 +107,14 @@ $(function () {
       'blur .edit': 'close'
     },
 
-    // The TodoView listens for changes to its model, re-rendering. Since
-    // there's a one-to-one correspondence between a **To-do** and a
-    // **TodoView** in this app, we set a direct reference on the model for
-    // convenience.
+    // The TodoView is the controller, registering events for the model.
     initialize: function () {
       this.listenTo(this.model, 'change', this.render);
       this.listenTo(this.model, 'destroy', this.remove);
       this.listenTo(this.model, 'visible', this.toggleVisible);
     },
 
-    // Re-render the titles of the to-do item.
+    // Re-render the titles of the items.
     render: function () {
       if (this.model.changed.id !== undefined) {
         //return;
@@ -151,7 +148,7 @@ $(function () {
       this.$input.focus();
     },
 
-    // Close the `"editing"` mode, saving changes to the to-do.
+    // Close the `"editing"` mode, saving changes to the item.
     close: function () {
       var value = this.$input.val();
       var trimmedValue = value.trim();
@@ -173,14 +170,14 @@ $(function () {
       this.$el.removeClass('editing');
     },
 
-    // If you hit `enter`, we're through editing the item.
+    // If you hit `enter`, we've finished editing the item.
     updateOnEnter: function (e) {
       if (e.which === ENTER_KEY) {
         this.close();
       }
     },
 
-    // If you're pressing `escape` we revert your change by simply leaving
+    // By pressing `escape` you revert your change by leaving
     // the `editing` state.
     revertOnEscape: function (e) {
       if (e.which === ESC_KEY) {
@@ -190,7 +187,7 @@ $(function () {
       }
     },
 
-    // Remove the item, destroy the model & delete its view.
+    // Remove the item, destroy the model and delete its view.
     clear: function () {
       // Without a title, the to-do will be deleted from the server
       this.model.set({title: ''}).save({ajaxSync: true});
@@ -201,25 +198,25 @@ $(function () {
   // To-do App View
   // --------------
 
-  // Our overall **AppView** is the top-level piece of UI.
+  // Our overall **AppView** is the main controller for the UI.
   app.AppView = Backbone.View.extend({
 
-    // Instead of generating a new element, bind to the existing skeleton of
-    // the App already present in the HTML.
+    // Bind the App to the existing skeleton
+    // already present in the HTML.
     el: '#todoapp',
 
-    // Our template for the line of statistics at the bottom of the app.
+    // The template for the line of statistics at the bottom of the app.
     statsTemplate: _.template($('#stats-template').html()),
 
-    // Delegated events for creating new items, and clearing completed ones.
+    // Delegated events for creating new items and clearing completed ones.
     events: {
       'keypress #new-todo': 'createOnEnter',
       'click #clear-completed': 'clearCompleted',
       'click #toggle-all': 'toggleAllComplete'
     },
 
-    // At initialization we bind to the relevant events on the `Todos`
-    // collection, when items are added or changed. 
+    // At initialization we bind to the relevant events on the 
+    // collection as well as when items are added or changed. 
     initialize: function () {
       this.allCheckbox = this.$('#toggle-all')[0];
       this.$input = this.$('#new-todo');
@@ -233,22 +230,22 @@ $(function () {
       this.listenTo(app.todos, 'filter', this.filterAll);
       this.listenTo(app.todos, 'all', _.debounce(this.render, 0));
 
-      // Suppresses 'add' events with {reset: true} and prevents the app view
+      // Supresses 'add' events with {reset: true} and prevents the app view
       // from being re-rendered for every model. 
       app.todos.fetch({reset: true});
+      
+      // In order to update the collection, we have to save every model
       var collection = app.todos;
       collection.refreshFromServer({success: function(freshData) {
           collection.reset(freshData);
           collection.each(function(model) {
             model = collection.parse(model);
             model.save();
-            //collection.sync('create', collection.find(model));
           });
         }});
     },
 
-    // Re-rendering the App just means refreshing the statistics -- the rest
-    // of the app doesn't change.
+    // Re-rendering the App means refreshing statistics
     render: function () {
       var completed = app.todos.completed().length;
       var remaining = app.todos.remaining().length;
@@ -274,15 +271,15 @@ $(function () {
       this.allCheckbox.checked = !remaining;
     },
 
-    // Add a single to-do item to the list by creating a view for it, and
-    // appending its element to the `<ul>`.
+    // Add a single to-do item to the list by creating a view,
+    // and appending its element to the `<ul>`.
     addOne: function (todo) {
       // console.log(todo);
       var view = new app.TodoView({ model: todo });
       this.$list.append(view.render().el);
     },
 
-    // Add all items in the **Todos** collection at once.
+    // Add all items in the **Todos** collection.
     addAll: function () {
       this.$list.html('');
       app.todos.each(this.addOne, this);
@@ -296,7 +293,7 @@ $(function () {
       app.todos.each(this.filterOne, this);
     },
 
-    // Generate the attributes for a new To-do item.
+    // Generate the attributes for a new item.
     newAttributes: function () {
       return {
         title: this.$input.val().trim(),
@@ -305,7 +302,7 @@ $(function () {
       };
     },
 
-    // If you hit return in the main input field, create new **To-do** model
+    // Typing return in the main input field creates a new **To-do** model
     createOnEnter: function (e) {
       if (e.which === ENTER_KEY && this.$input.val().trim()) {
         app.todos.create(this.newAttributes());
@@ -313,7 +310,7 @@ $(function () {
       }
     },
 
-    // Clear all completed to-do items, destroying their models.
+    // Clear all completed to-do items.
     clearCompleted: function () {
       _.invoke(app.todos.completed(), 'destroy');
       return false;
@@ -333,7 +330,7 @@ $(function () {
     }
   });
 
-  // kick things off by creating the `App`
+  // Create the `App` in this scope
   new app.AppView();
 
   // To-do Router
@@ -344,11 +341,11 @@ $(function () {
     },
 
     setFilter: function (param) {
-      // Set the current filter to be used
+      // Set the current filter
       app.TodoFilter = param || '';
 
-      // Trigger a collection filter event, causing hiding/unhiding
-      // of To-do view items
+      // Trigger a collection filter event 
+      // hiding/unhiding of items
       app.todos.trigger('filter');
     }
   });
