@@ -6,7 +6,7 @@ I had to pass on implementing the CSRF as well as other security measures. I've 
 
 ##### What To Expect
 
-* This todo app requires PHP 7.1+ and MySQL/MariaDB with utf8mb4 support character set (gotta have those emojis).
+* This todo app requires PHP 7.1+ and MySQL/MariaDB with utf8mb4 character set support (gotta have those emojis).
   * I use composer installed globally to manage the dependencies. 
   * If you need to, download and install composer.phar into this directory and run `php composer.phar install -o`
   * I also use XAMPP but you can terminal in to this directory and run `php -S localhost:8080`
