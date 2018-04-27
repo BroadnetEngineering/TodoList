@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>To-Do App</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="templates/css/index.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="vendor/components/underscore/underscore-min.js"></script>
+    <script src="vendor/components/backbone/backbone-min.js"></script>
+    <script src="templates/js/utils/Backbone.localStorage.js"></script>
+    <!-- script src="templates/js/models/todo.js"></script>
+    <script src="templates/js/collections/todos.js"></script>
+    <script src="templates/js/views/todo-view.js"></script>
+    <script src="templates/js/views/app-view.js"></script -->
+
+
+</head>
+<body>
+<div>
+    <div>
+        <nav class="navbar navbar-inverse" role="navigation" style="padding-left:130px;">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/"><strong>To-Dos</strong><span class="sr-only"> (current)</span></a></li>
+                <li><a href="/help">Help</a></li>
+            </ul>
+        </nav>
+    </div>
+    <br/>
+    <div class="jumbotron" style="padding-left:130px;">
+        <h2>Code Challenge...</h2>
+        <div id="todoapp">
+
+            <header>
+                <h1>To do:</h1>
+                <input id="new-todo" type="text" placeholder="What needs to be done?">
+            </header>
+            <br />
+
+            <section id="main">
+                <input id="toggle-all" type="checkbox">
+                <label for="toggle-all">Mark all as complete</label>
+                <ul id="todo-list"></ul>
+            </section>
+
+            <footer class="footer">
+                <a id="clear-completed">Clear completed</a>
+                <div id="todo-count"></div>
+            </footer>
+
+        </div>
+        <div id="instructions"><br />
+            Double-click to edit a to-do (if appropriate).
+        </div>
+        <p><br>...by {{name}} Pitchford</p>
+        <!--
+// Render HTML form which POSTs to API with two hidden input fields for the
+// name and value:
+        -->
+<form><input type="hidden" name="{{ nameKey }}" value="{{ nameString }}">
+<input type="hidden" name="{{ valueKey }}" value="{{ valueString }}"></form>
+    </div>
+</div>
+
+<!-- Templates -->
+
+<script type="text/template" id="item-template">
+    <div class="view">
+        <input class="toggle" type="checkbox" <%= completed ? 'checked="checked"' : '' %> />
+        <label><%- title %></label>
+        <a class="destroy"></a>
+    </div>
+    <input class="edit" type="text" value="<%- title %>" />
+</script>
+
+<script type="text/template" id="stats-template">
+    <% if (completed) { %>
+    <a id="clear-completed">Clear <%= completed %> completed <%= completed == 1 ? 'item' : 'items' %></a>
+    <% } %>
+    <div class="todo-count"><b><%= remaining %></b> <%= remaining == 1 ? 'item' : 'items' %> left to finish!</div>
+</script>
+
+<script src="templates/js/Todos.app.js"></script>
+
+</body>
+</html>
