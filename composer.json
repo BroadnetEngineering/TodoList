@@ -1,6 +1,6 @@
 {
-    "name": "databoybiz/todo",
-    "description": "Code challenge from https://github.com/BroadnetEngineering/TodoList",
+    "name": "databoy/TodoList",
+    "description": "Code challenge 'To-Do' forked from https://github.com/BroadnetEngineering/TodoList",
     "type": "project",
     "require": {
         "phpunit/phpunit": "^7.1",
