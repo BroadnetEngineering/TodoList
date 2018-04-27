@@ -9,7 +9,6 @@ $(function () {
 
   Backbone.js uses MVC
 
-  TODO: synchronize changes to the server
    */
 
   // To-do Model
@@ -18,7 +17,6 @@ $(function () {
   // Our basic **To-do** model has `title`, `order`, and `completed` attributes.
   app.Todo = Backbone.Model.extend({
     // Default attributes for a to-do
-    // Ensure that each to-do created has `title` and `completed` keys.
     defaults: {
       title: '',
       completed: false
@@ -72,8 +70,6 @@ $(function () {
       return this.where({completed: false});
     },
 
-    // We keep the Todos in sequential order, despite being saved by unordered
-    // GUID in the database. This generates the next order number for new items.
     nextOrder: function () {
       return this.length ? this.last().get('order') + 1 : 1;
     },
@@ -123,13 +119,6 @@ $(function () {
 
     // Re-render the titles of the to-do item.
     render: function () {
-      // Backbone LocalStorage is adding `id` attribute instantly after
-      // creating a model.  This causes our TodoView to render twice. Once
-      // after creating a model and once on `id` change.  We want to
-      // filter out the second redundant render, which is caused by this
-      // `id` change.  It's known Backbone LocalStorage bug, therefore
-      // we've to create a workaround.
-      // https://github.com/tastejs/todomvc/issues/469
       if (this.model.changed.id !== undefined) {
         //return;
       }
@@ -167,10 +156,6 @@ $(function () {
       var value = this.$input.val();
       var trimmedValue = value.trim();
 
-      // We don't want to handle blur events from an item that is no
-      // longer being edited. Relying on the CSS class here has the
-      // benefit of us not having to maintain state in the DOM and the
-      // JavaScript logic.
       if (!this.$el.hasClass('editing')) {
         return;
       }
@@ -234,8 +219,7 @@ $(function () {
     },
 
     // At initialization we bind to the relevant events on the `Todos`
-    // collection, when items are added or changed. Kick things off by
-    // loading any preexisting todos that might be saved
+    // collection, when items are added or changed. 
     initialize: function () {
       this.allCheckbox = this.$('#toggle-all')[0];
       this.$input = this.$('#new-todo');
@@ -250,8 +234,7 @@ $(function () {
       this.listenTo(app.todos, 'all', _.debounce(this.render, 0));
 
       // Suppresses 'add' events with {reset: true} and prevents the app view
-      // from being re-rendered for every model. Only renders when the 'reset'
-      // event is triggered at the end of the fetch.
+      // from being re-rendered for every model. 
       app.todos.fetch({reset: true});
       var collection = app.todos;
       collection.refreshFromServer({success: function(freshData) {
