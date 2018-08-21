@@ -1,3 +1,6 @@
+##MySql dump file is todo-1.sql.  DB Name is test.
+
+
 ## Todo App
 
 As a potential employee of Broadnet we would like to be able to gauge your programming skill and how you approach a development task.
