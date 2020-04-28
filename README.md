@@ -32,6 +32,7 @@ Once the containers are built the site will be accessible at http://localhost
 * alpinejs and tailwindcss for the frontend interactivity and styling.
 
 ##### How would I improve this?
+* Add PHPUnit and write unit tests for the models then refactor the app.php into something more testable and write tests for that. 
 * use Parcel.js and PurgeCSS to only use what we need and to get access to the @apply to create cleaner css classes using tailwind.  
 * Add a Database for to allow for persisting tasks past the 2hr session limit.
 
