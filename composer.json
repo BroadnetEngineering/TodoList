@@ -1,0 +1,12 @@
+{
+    "name": "mmccook/todo-code-test",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mark McCook",
+            "email": "mark.mccook@gmail.com"
+        }
+    ],
+    "require": {}
+}
