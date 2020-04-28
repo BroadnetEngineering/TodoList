@@ -8,29 +8,28 @@ require('./src/app.php');
         <script type="module" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
         <script nomodule src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine-ie11.min.js" defer></script>
     </head>
-    <body x-data="initialData()">
+    <body class="bg-gray-800" x-data="initialData()">
         <div class="container mx-auto flex flex-col">
-            <div class="mx-auto h-auto mt-32 w-1/3">
+            <div class="mx-auto h-auto md:mt-32 mt-20 md:w-1/2 w-10/12 p-5 bg-gray-200">
             <div class="flex">
                 <h3 class="text-4xl mx-auto">Todo List</h3>
             </div>
             <div class="flex">
                 <form class="flex flex-col w-full">
-                    <input class="w-full border border-gray-200 text-center" placeholder="Type here to add a new task" type="text" x-model="addForm.text" x-on:keydown.enter.prevent="add()" />
-                    
+                    <input class="w-full border border-gray-200 text-center rounded-md" placeholder="Type here then press enter to add a new task" maxlength="25" type="text" x-model="addForm.text" x-on:keydown.enter.prevent="add()" />
                 </form>
             </div>
             <ul>
                 <template x-for="(task, index) in tasks" :key="index">
                     <li class="w-full text-lg text-gray-700 flex flex-row my-1">
-                        <span class="mr-auto" x-text="task.text"></span>
+                        <span class="mr-auto overflow-hidden" x-text="task.text"></span>
                         <input class="my-auto" x-model="task.completed" type="checkbox" @click="$nextTick(()=>{complete(task)})" />
                         <button class="pl-2 my-auto" @click.prevent="editTask(task)">&#9997;</button>
                         <button class="pl-2 my-auto" @click.prevent="remove(task)">&#9940;</button>
                     </li>
                 </template>
             </ul>            
-            <button class=" w-full self-end bg-red-400 p-2 px-4 rounded-md" @click.prevent="destroy()">Clear Data</button>
+            <button class="mt-5 w-full self-end bg-red-400 p-2 px-4 rounded-md" @click.prevent="destroy()">Clear Data</button>
             </div>
             
         </div>
