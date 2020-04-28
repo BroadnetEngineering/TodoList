@@ -19,3 +19,18 @@ As a potential employee of Broadnet we would like to be able to gauge your progr
 
 * Assuming you forked the repository, send us a pull request.
 * Alternatively, zip up your submission and email us.
+
+
+##### How to Run 
+run `docker-compose up` within the root of the project directory. 
+Once the containers are built the site will be accessible at http://localhost
+
+##### What I did
+* Using vanilla PHP for the backend. 
+* session to store the tasks temporarily.
+* alpinejs and tailwindcss for the frontend interactivity and styling.
+
+##### How would I improve this?
+* use Parcel.js and PurgeCSS to only use what we need and to get access to the @apply to create cleaner css classes using tailwind.  
+* Add a Database for to allow for persisting tasks past the 2hr session limit.
+
