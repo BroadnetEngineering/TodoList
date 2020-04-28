@@ -80,7 +80,6 @@ tbody tr:hover {
 	background: #E9E9E9;
 }
 
-/* The Modal (background) */
 .modal{
     width: 50%; 
     height: auto; 
@@ -98,11 +97,10 @@ tbody tr:hover {
     border-radius: 30px;
 }
 
-/* Modal Content/Box */
 .modal_content{
     background-color: #fefefe;
-    margin: auto; /* 15% from the top and centered */
-    width: 80%; /* Could be more or less, depending on screen size */
+    margin: auto; 
+    width: 80%; 
     padding: 15px;
 }
 
