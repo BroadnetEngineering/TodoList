@@ -1,0 +1,4 @@
+-Due to the sha2 MySQL uses I had to enable native user password with:
+    ALTER USER 'nativeuser'@'localhost'IDENTIFIED WITH mysql_native_password BY 'password';
+
+-Also this project is using a LAMP stack run on Ubuntu with Apache2, MySQL, and PHP.
