@@ -11,3 +11,4 @@
 - Since you guys are using Bootstrap I implemented front-end using this framework
 - Please update Core/Config.php file with your database credentials
 - Please import db.sql into your database. This is mysqldump
+- MySQL dump contains additional information on the SQL version and Ubuntu versions. (Both latest version as of today 05/05/2020)
