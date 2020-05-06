@@ -9,6 +9,32 @@
     </head>
     <body>
         <?php require_once 'process.php'; ?>
+
+        <?php if(isset($_SESSION["message"])): ?>
+            <div class="alert alert-<?=$_SESSION['msg_type']?>">
+                <?php
+                    echo $_SESSION['message'];
+                    unset($_SESSION['message']);
+                ?>
+            </div>
+        <?php endif ?>
+
+        <div class="row justify-content-center">
+                <form action="process.php" method="POST">
+                    <div class="form-group" style="text-align:center;">
+                        <h2><strong>Todo List</strong></h2>
+                        <input class="form-control" type="text" name="todo" value="<?php echo $todo; ?>" placeholder="Add a todo...">
+                    </div>
+                    <div class="form-group" style="text-align:center;">
+                    <?php if ($update == true): ?>
+                        <button class="btn btn-success" type="submit" name="update">Update</button>
+                    <?php else: ?>
+                        <button class="btn btn-success" type="submit" name="save">Save</button>
+                    <?php endif; ?>
+                    </div>
+                </form>
+        </div>
+
         <div class="container">
         <?php
             $conn = mysqli_connect('localhost', 'root', '', 'todo-crud') or die(mysql_error($conn));
@@ -18,22 +44,23 @@
 
             <div class="row justify-content-center">
                 <table class="table">
-                    <th>
                         <tr>
                             <th>Todo</th>
+                            <th>Created On</th>
                             <th colspan="2">Action</th>
                         </tr>
-                    </th>
-            <?php
-                while ($row = $result->fetch_assoc()): ?>
-                    <tr>
-                        <td><?php echo $row['todo']; ?></td>
-                        <td></td>
-                    </tr>
-                <?php endwhile; ?>
+                    <?php while ($row = $result->fetch_assoc()): ?>
+                        <tr>
+                            <td class="align-middle"><?php echo $row['todo']; ?></td>
+                            <td class="align-middle"></td>
+                            <td>
+                                <a class="btn btn-primary" href="index.php?edit=<?php echo $row['id']; ?>">Edit</a>
+                                <a class="btn btn-danger" href="process.php?delete=<?php echo $row['id']; ?>">Delete</a>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
                 </table>
             </div>
-
             <?php
 
                 function pre_r( $array ) {
@@ -42,17 +69,6 @@
                     echo '</pre>';
                 }
             ?>
-            <div class="row justify-content-center">
-                <form action="process.php" method="POST">
-                    <div class="form-group">
-                        <label>Todo List</label>
-                        <input class="form-control" type="text" name="todo" value="Add a todo">
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-success" type="submit" name="save">Save</button>
-                    </div>
-                </form>
-            </div>
         </div>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
