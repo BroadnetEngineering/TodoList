@@ -1,0 +1,24 @@
+.custom-control-label::before {
+    width: 2rem;
+    height: 2rem;
+    left: -2.8rem;
+}
+
+.custom-control-label::after {
+    width: 2rem;
+    height: 2rem;
+    left: -2.8rem;
+}
+
+.custom-control {
+    padding-left: 2.5rem;
+}
+
+.btn.to-do {
+    margin-left: 20px;
+    height: 38px;
+}
+
+form {
+    margin-top: 20px;
+}
