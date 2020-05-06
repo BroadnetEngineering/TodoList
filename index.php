@@ -9,18 +9,52 @@
     </head>
     <body>
         <?php require_once 'process.php'; ?>
-        <div class="row justify-content-center">
-            <form action="process.php" method="POST">
-                <div class="form-group">
-                    <label>Todo List</label>
-                    <input class="form-control" type="text" name="todo" value="Add a todo">
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-success" type="submit" name="save">Save</button>
-                </div>
-            </form>
+        <div class="container">
+        <?php
+            $conn = mysqli_connect('localhost', 'root', '', 'todo-crud') or die(mysql_error($conn));
+            $result = $conn->query("SELECT * FROM data") or die($conn->error);
+            // pre_r($result);
+        ?>
+
+            <div class="row justify-content-center">
+                <table class="table">
+                    <th>
+                        <tr>
+                            <th>Todo</th>
+                            <th colspan="2">Action</th>
+                        </tr>
+                    </th>
+            <?php
+                while ($row = $result->fetch_assoc()): ?>
+                    <tr>
+                        <td><?php echo $row['todo']; ?></td>
+                        <td></td>
+                    </tr>
+                <?php endwhile; ?>
+                </table>
+            </div>
+
+            <?php
+
+                function pre_r( $array ) {
+                    echo '<pre>';
+                    print_r($array);
+                    echo '</pre>';
+                }
+            ?>
+            <div class="row justify-content-center">
+                <form action="process.php" method="POST">
+                    <div class="form-group">
+                        <label>Todo List</label>
+                        <input class="form-control" type="text" name="todo" value="Add a todo">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success" type="submit" name="save">Save</button>
+                    </div>
+                </form>
+            </div>
         </div>
-        
+
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
