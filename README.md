@@ -19,3 +19,7 @@ As a potential employee of Broadnet we would like to be able to gauge your progr
 
 * Assuming you forked the repository, send us a pull request.
 * Alternatively, zip up your submission and email us.
+
+##### Things I would have liked to improve
+* Use ENV for credentials
+* Make it all ajax, but I didn't have time to write the logic to redraw the datatable on every request
