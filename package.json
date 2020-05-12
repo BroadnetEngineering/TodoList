@@ -1,0 +1,20 @@
+{
+  "name": "broadnetcodetest",
+  "version": "1.0.0",
+  "description": "A to-do application for my Broadnet code test",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Christine de Carteret",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.1.0",
+    "sass": "^1.26.5"
+  }
+}
