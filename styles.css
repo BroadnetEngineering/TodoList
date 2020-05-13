@@ -1,0 +1,153 @@
+*{
+	margin:0;
+	padding:0;
+}
+
+body{
+	font-size:0.825em;
+	color:#666;
+	background-color:#fff;
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+/* todoList styling - todoList items */
+ul.todoList{
+	margin:0 auto;
+	width: 55%;
+	position:relative;
+}
+
+ul.todoList li{
+	background-color:#F9F9F9;
+	border:1px solid #EEEEEE;
+	list-style:none;
+	margin:6px;
+	padding:6px 9px;
+	position:relative;
+	cursor:n-resize;	
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+}
+
+ul.todoList li:hover{
+	border-color:#9be0f9;
+	-moz-box-shadow:0 0 5px #A6E5FD;
+	-webkit-box-shadow:0 0 5px #A6E5FD;
+	box-shadow:0 0 5px #A6E5FD;
+}
+ 
+/* App title */
+.app-title {
+	width: 50%;
+	padding: 8px;
+    margin: 25px auto;
+    text-align: center;
+    color: #000000;
+    font-size: 20px;
+    border: 2px solid #ffffff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.todo .text{
+	color:#777777;
+	font-size:1.2em;
+}
+
+/* The edit and delete buttons */
+.todo .actions{
+	position:absolute;
+	right:7px;
+	top:6px;
+}
+
+.todo .actions a.edit{
+	color: #fff;
+    background-color: #f0ad4e;
+	border-color: #eea236;
+	padding: 4px;
+	border-radius: 4px;
+}
+
+.todo .actions a.delete{
+	color: #fff;
+    background-color: #d9534f;
+	border-color: #d43f3a;
+	padding: 4px;
+	border-radius: 4px;
+}
+
+.todo input{
+	border:1px solid #CCCCCC;
+	color:#666666;
+	font-family:Arial,Helvetica,sans-serif;
+	font-size:0.8em;
+	padding:3px 4px;
+	width:250px;
+}
+
+/* The Save and Cancel edit links: */
+.editTodoItem{
+	display:inline;
+	font-size:0.6em;
+	padding-left:9px;
+}
+
+.editTodoItem a{
+	font-weight:bold;
+}
+
+a.discardChanges{
+	color:#C00 !important;
+	font-size: 12px;
+}
+
+a.saveChanges{
+	color:#4DB209 !important;
+	font-size: 12px;
+}
+
+#main{
+	position:relative;
+	margin:0 auto;
+	width:960px;
+}
+/* Links */
+
+a {
+	color:#000000;
+	text-decoration:none;
+	outline:none;
+}
+
+/* form styling */
+form {
+    width: 50%;
+    margin: 25px auto;
+    border-radius: 5px;
+    padding: 10px;
+    background: #FCD7AE;
+    border: 2px solid #F6B166;
+}
+
+/* task field */
+.task-input {
+    width: 73%;
+    height: 15px;
+    padding: 10px;
+    border: 2px solid #cccccc;
+}
+
+/* add new Task button */
+.add-btn {
+	margin:3px auto;
+    height: 38px;
+    border: 2px solid pink;
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 5px 20px;
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    cursor: pointer;
+}
