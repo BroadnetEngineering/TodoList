@@ -1,0 +1,12 @@
+Quick Notes on the code challange:
+
+1) I used vanila JavaScript PHP and MySQL for the code challenge.
+2) I used raw ajax because I wasn't sure if jQuery was ok or not with this challenge. 
+   - jQuery could definetly make this eaiser by simply doing $.get("ajax.php", function(data, status){...} for the ajax calls 
+     instead of doing "xmlhttp =new XMLHttpRequest()" using the raw ajax way.
+3) I use a PHP class (TodoListApp) to implement the CRUD operations. This is very common way when working with Spring or Laravel (PHP framework), etc.
+4) I also used PDO for DB interaction.
+5) HTML and JavaScript code have been done in different files for better organization and vizualization.
+    
+   Thanks,
+   Henry Granados
