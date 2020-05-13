@@ -1,4 +1,4 @@
-[View the live build!](https://ryanbahan.github.io/broadnet-todo/)
+[*View the live build!*](https://ryanbahan.github.io/broadnet-todo/)
 
 ## Todo App
 
