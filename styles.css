@@ -1,0 +1,125 @@
+ *{
+    box-sizing: border-box;
+   }
+
+  body {
+    margin: 0;
+  }
+
+  header {
+    background-color: #E5F3F2;
+    color: #00A79D;
+    font-family: 'Roboto Slab', serif;
+    font-size: 32px;
+    text-align: center;
+  }
+
+  h1{
+    font-size: 3.5rem;
+    margin: 0;
+    padding: 18px;
+  }
+
+  .list {
+    color: #6D6E71;
+  }
+
+  form {
+    align-items: center;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  input, textarea{
+    border: 2px solid #BDBEC0;
+    font-size: 24px;
+    height: 41px;
+    letter-spacing: 1px;
+    margin: 1%;
+    padding: 6px;
+    width: 55%;
+  }
+
+  ::placeholder{
+    color: #BDBEC0;
+  }
+
+  .title{
+    margin-top:30px;
+  }
+  
+  .save-input {
+    background-color: #00A79D;
+    border: none;
+    color: #FFFFFF;
+    font-size: 24px;
+    height: 47px;
+    margin-bottom: 30px;
+    margin-top:10px;
+    width: 55.25%;
+  }
+
+  .save-input:hover {
+    background-color: #045E55;
+  }
+
+  main {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .search{
+    margin-bottom: 20px;
+    margin-top: 30px;
+  }
+
+  article {
+    border-bottom: 1px solid #D1D3D4;
+    width: 55%;
+  }
+
+  .toDo-card{
+    height: 179px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  h2 {
+    color: #6D6E71;
+    font-family: 'Roboto Slab', sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .delete{
+    border: none;
+    border-radius: 50%;
+    bottom: 45px;
+    height: 30px;
+    position: relative;
+    width: 30px;
+    align-self: flex-end;
+  }
+
+  p {
+    color: #939598;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 19px;
+  }
+
+
+  h4{
+    color: #6D6E71;
+    font-family: 'Roboto Slab', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0;
+    text-transform: lowercase;
+  }
+  
