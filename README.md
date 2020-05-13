@@ -1,29 +1,21 @@
-# todo-list
+## Todo App
 
-## Project setup
-```
-npm install
-```
+As a potential employee of Broadnet we would like to be able to gauge your programming skill and how you approach a development task.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+##### What We Expect
 
-### Compiles and minifies for production
-```
-npm run build
-```
+* You may use the language of your choice.
+* The frontend portion of your app is entirely freeform.
+* If you use MySQL or similar, you must provide a SQL script to create the schema as part of your pull request.
+* Your app must support creating, reading, updating, and deleting of todo list items.
 
-### Run your unit tests
-```
-npm run test:unit
-```
+##### Tips
 
-### Lints and fixes files
-```
-npm run lint
-```
+* Quality over quantity!
+* Do what you do everyday, we want to see you're development style.
+* Feel free to think outside the box!
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+##### What to Do When You Are Done
+
+* Assuming you forked the repository, send us a pull request.
+* Alternatively, zip up your submission and email us.
