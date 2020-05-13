@@ -49,7 +49,7 @@
     margin-top:30px;
   }
   
-  .save-input {
+  .save-button {
     background-color: #00A79D;
     border: none;
     color: #FFFFFF;
@@ -60,7 +60,7 @@
     width: 55.25%;
   }
 
-  .save-input:hover {
+  .save-button:hover {
     background-color: #045E55;
   }
 
@@ -99,6 +99,7 @@
 
   .delete{
     border: none;
+    background-color: #00A79D; 
     border-radius: 50%;
     bottom: 45px;
     height: 30px;

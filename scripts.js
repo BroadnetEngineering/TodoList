@@ -23,7 +23,7 @@ function ToDo (title, body) {
     this.html = `
         <article class="toDo-card" id=${this.dateIdentifier}>
             <h2 contenteditable="true" id="title">${this.title}</h2>
-            <button class="delete">delete</button>
+            <button class="delete">X</button>
             <p contenteditable="true" id="body">${this.body}</p>
         <article>`
 }
@@ -42,7 +42,6 @@ const getToDo = (selectedId) => {
     const selectedToDo = toDos.find(toDo => {
         return toDo.dateIdentifier == selectedId
     })
-    console.log(selectedToDo, 'foundCard')
     return selectedToDo
 }
 
@@ -85,7 +84,6 @@ const updateHTML = (toDo) => {
 const updateSearch = (e) => {
 
     const searchTerm = e.target.value.toLowerCase()
-    console.log(searchTerm)
     let filteredToDos = toDos.filter(toDo => {
         return (toDo.title.toLowerCase().includes(searchTerm) || toDo.body.toLowerCase().includes(searchTerm))
     })
