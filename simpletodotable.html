@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		.top_area {
+			text-align: center;
+		}
+		table{
+			width: 100%;
+		}
+
+		.my_chore {
+			width: 80%;
+		}
+
+		.delete_button, .edit_button {
+			width: 100%;
+		}
+
+		tr:nth-child(odd) {
+			background-color: #beffab;
+		}
+	</style>
+</head>
+
+
+<body>
+	<section>
+		<div class='top_area'>
+			<input id='user_input' type='text' placeholder='I need to...'/>
+			<button value='Add' id='add' onclick='addTodo()'>Add</button>
+		</div>
+		<table><tbody id='todo_list'></tbody></table>
+	</section>
+	<script>
+		function addTodo() {
+			var chore = document.getElementById('user_input').value;
+			if (chore == ''){
+				window.alert('Please enter a value')
+			}
+			else 
+			{
+				var todoList = document.getElementById('todo_list');
+				todoList.innerHTML += "<tr><td class='my_chore'>" + chore + "</td><td><button class='delete_button' onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode)'>Delete</button></td><td ><button class='edit_button' onclick='edit(this.parentNode.parentNode)' >Edit</td></row>";
+			}
+			document.getElementById('user_input').value = '';
+		}
+		function edit(node){
+			var editedTodo = prompt('Edit this todo',node.firstChild.innerHTML);
+			node.firstChild.innerHTML = editedTodo;
+		}
+		document.getElementById('user_input').value = '';
+	</script>
+</body>
+</html>
