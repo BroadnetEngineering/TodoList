@@ -1,32 +1,38 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+	<div id="app">
+		<div class="container my-5">
+			<h1>Your ToDos</h1>
+			<Nav />
+			<list />
+		</div>
+	</div>
 </template>
+
+<script>
+import List from './components/TodoList';
+import Nav from './components/Nav';
+import { mapActions } from 'vuex';
+
+export default {
+	components: {
+		List,
+		Nav
+	},
+	created() {
+		this.getTodos();
+	},
+	methods: {
+		...mapActions(['getTodos'])
+	}
+};
+</script>
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+	font-family: Avenir, Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-align: center;
+	color: #2c3e50;
 }
 </style>
