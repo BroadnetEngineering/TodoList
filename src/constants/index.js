@@ -17,3 +17,10 @@ export const network = {
 	NETWORK_ERROR:
 		'Oops, looks like the api is broken, make sure to start json-server'
 };
+
+export default {
+	globals,
+	messages,
+	network,
+	search
+};

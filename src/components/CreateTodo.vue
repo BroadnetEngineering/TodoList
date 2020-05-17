@@ -158,10 +158,17 @@ function addTodo() {
 	const newTodo = { ...this.todo };
 	newTodo.title = newTodo.title.replace(/[^a-zA-Z0-9 ]/g, '');
 
-	this.createTodo(newTodo)
-		.then(() => {
-			this.todo.title = '';
-			this.showSearchForm = false;
-		});
+	this.createTodo(newTodo).then(() => {
+		this.todo.title = '';
+		this.showSearchForm = false;
+	});
 }
 </script>
+
+<style lang="scss" scoped>
+.slanted-top {
+	height: 25px;
+	-webkit-clip-path: polygon(0% 96%, 100% 0%, 100% 100%, 0% 100%);
+	clip-path: polygon(0% 96%, 100% 0%, 100% 100%, 0% 100%);
+}
+</style>

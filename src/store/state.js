@@ -5,10 +5,10 @@ export default {
 	},
 	pagination: {
 		currentPage: 1,
-		rowsPerPage: 7,
+		rowsPerPage: 10,
 		totalResults: 0
 	},
-	todos: {},
 	showSpeedBump: false,
-	speedBump: {}
+	speedBump: {},
+	todos: {}
 };

@@ -15,13 +15,13 @@
 
 <script>
 import { mapState, mapActions, mapMutations } from 'vuex';
-import _ from 'lodash';
 import { search, globals } from '../constants';
 
 export default {
 	data() {
 		return {
-			searchText: ''
+			searchText: '',
+			timeout: () => {}
 		};
 	},
 	computed: {
@@ -30,27 +30,33 @@ export default {
 	methods: {
 		...mapActions(['getTodos']),
 		...mapMutations(['SET_CURRENT_PAGE', 'SET_MESSAGE']),
-		handleSearch: _.debounce(function() {
-			this.$emit('search');
-
-			if (!this.searchText) {
-				this.SET_CURRENT_PAGE(1);
+		handleSearch() {
+			if (this.timeout) {
+				clearTimeout(this.timeout);
 			}
 
-			if (this.searchText.length > globals.SEARCH_TEXT_LIMIT) {
-				this.SET_MESSAGE({
-					content: search.SEARCH_TEXT_LENGTH,
-					type: 'danger'
-				});
-				return;
-			}
+			this.timeout = setTimeout(() => {
+				if (!this.searchText) {
+					this.SET_CURRENT_PAGE(1);
 
-			const filterdSearchRext = this.searchText.replace(
-				/[^a-zA-Z0-9 ]/g,
-				''
-			);
-			this.getTodos({ searchTerm: filterdSearchRext });
-		}, 800)
+					return;
+				}
+
+				if (this.searchText.length > globals.SEARCH_TEXT_LIMIT) {
+					this.SET_MESSAGE({
+						content: search.SEARCH_TEXT_LENGTH,
+						type: 'danger'
+					});
+
+					return;
+				}
+
+				const filterdSearchTerm = this.searchText
+					.replace(/[^a-zA-Z0-9 ]/g, '');
+
+				this.getTodos({ searchTerm: filterdSearchTerm });
+			}, 500);
+		}
 	},
 	mounted() {
 		this.$refs.searchInput.focus();

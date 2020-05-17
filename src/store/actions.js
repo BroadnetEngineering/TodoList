@@ -6,7 +6,8 @@ import store from './';
 
 const DB_URL = 'http://localhost:3000';
 
-export const getTodos = ({ state, commit }, { searchTerm = '' }) => {
+export const getTodos = ({ state, commit }, { searchTerm }) => {
+	// TODO: Refactor the search to have it's own action (conflicts with sorting)
 	const sharedParams = `&_limit=${state.pagination.rowsPerPage}`;
 	const defaultParams = `?_sort=created&_order=desc&_page=${state.pagination.currentPage}`;
 	const serarchParams = `?q=${searchTerm}&_limit=${state.pagination.rowsPerPage}`;
@@ -14,13 +15,11 @@ export const getTodos = ({ state, commit }, { searchTerm = '' }) => {
 
 	return axios
 		.get(`${DB_URL}/todos${requestParams}${sharedParams}`)
-		.then(result => {
-			console.log(result);
+		.then(response => {
+			const totalCount = response.headers['x-total-count'];
+			const totalResults = parseInt(totalCount) || response.data.length;
 
-			const totalCount = result.headers['x-total-count'];
-			const totalResults = parseInt(totalCount) || result.data.length;
-
-			commit(mutationTypes.SET_TODOS, result.data);
+			commit(mutationTypes.SET_TODOS, response.data);
 			commit(mutationTypes.SET_TOTAL_RESULTS, totalResults);
 
 			if (totalResults === 0) {
@@ -35,7 +34,11 @@ export const getTodos = ({ state, commit }, { searchTerm = '' }) => {
 		});
 };
 
-export const createTodo = ({ state, commit, dispatch }, todo) => {
+export const createTodo = ({ commit, dispatch }, todo) => {
+	if (!todo) {
+		return;
+	}
+
 	const newTodo = {
 		id: uuidv4(),
 		created: new Date(),
@@ -44,8 +47,8 @@ export const createTodo = ({ state, commit, dispatch }, todo) => {
 
 	return axios
 		.post(`${DB_URL}/todos`, newTodo)
-		.then(result => {
-			commit(mutationTypes.ADD_TODO, result.data);
+		.then(response => {
+			commit(mutationTypes.ADD_TODO, response.data);
 			commit(mutationTypes.SET_MESSAGE, {
 				type: 'success',
 				content: messages.TODO_CREATED
@@ -57,7 +60,11 @@ export const createTodo = ({ state, commit, dispatch }, todo) => {
 		});
 };
 
-export const deleteTodo = ({ state, commit, dispatch }, { id }) => {
+export const deleteTodo = ({ commit, dispatch }, { id }) => {
+	if (!id) {
+		return;
+	}
+
 	return axios
 		.delete(`${DB_URL}/todos/${id}/`)
 		.then(result => {
@@ -72,11 +79,15 @@ export const deleteTodo = ({ state, commit, dispatch }, { id }) => {
 		});
 };
 
-export const updateTodo = ({ state, commit, dispatch }, todo) => {
+export const updateTodo = ({ commit, dispatch }, todo) => {
+	if (!todo) {
+		return;
+	}
+
 	return axios
 		.put(`${DB_URL}/todos/${todo.id}/`, todo)
 		.then(result => {
-			dispatch('getTodos');
+			dispatch('getTodos', {});
 			commit(mutationTypes.SET_MESSAGE, {
 				type: 'success',
 				content: messages.TODO_UPDATED
@@ -89,11 +100,10 @@ export const updateTodo = ({ state, commit, dispatch }, todo) => {
 
 /**
  * Handles errors for api calls
+ * @param {Error} error
  */
 function handleErrors(error) {
-	console.log('error', store);
 	console.log('error', error);
-	console.log('error', error.message);
 	if (error.message === 'Network Error') {
 		store.commit(mutationTypes.SET_MESSAGE, {
 			type: 'danger',

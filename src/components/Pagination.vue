@@ -1,7 +1,7 @@
 <template>
-	<div class="slanted slanted-bottom pagniation-wrapper bg-primary">
+	<div class="slanted-bottom pagniation-wrapper bg-primary">
 		<nav
-			aria-label="Page navigation example"
+			aria-label="Page navigation"
 			v-if="pagination.totalResults > todos.length && todos.length"
 		>
 			<ul class="pagination justify-content-end pt-3 pr-3">
@@ -11,27 +11,23 @@
 						@click.prevent="prevNext(-1)"
 						href="javascript:void(0)"
 						v-if="pagination.currentPage !== 1"
-						>Previous</a
-					>
+					>Previous</a>
 				</li>
 				<li
 					class="page-item"
-					v-for="(page, index) in numberOfPages"
 					:key="`page-${page}-${index}`"
+					v-for="(page, index) in numberOfPages"
 				>
 					<a
 						@click.prevent="setCurrentPage(page)"
 						class="page-link border-0 rounded-0 bg-transparent text-white"
 						href="javascript:void(0)"
 						v-if="pagination.currentPage !== page"
-						>{{ page }}</a
-					>
+					>{{ page }}</a>
 					<span
 						class="text-primary border-0 bg-light page-link rounded-0"
 						v-else
-					>
-						{{ page }}
-					</span>
+					>{{ page }}</span>
 				</li>
 				<li
 					class="page-item"
@@ -41,8 +37,7 @@
 						class="page-link rounded-0 border-0 bg-transparent text-white"
 						@click.prevent="prevNext(1)"
 						href="javascript:void(0)"
-						>Next</a
-					>
+					>Next</a>
 				</li>
 			</ul>
 		</nav>
@@ -56,11 +51,9 @@ export default {
 	computed: {
 		...mapState(['pagination', 'todos']),
 		numberOfPages() {
-			const numberOfPages = Math.ceil(
+			return Math.ceil(
 				this.pagination.totalResults / this.pagination.rowsPerPage
 			);
-
-			return numberOfPages;
 		}
 	},
 	methods: {
@@ -94,6 +87,14 @@ function setCurrentPage(pageNumber) {
 	}
 
 	this.SET_CURRENT_PAGE(pageNumber);
-	this.getTodos({ currentPage: pageNumber });
+	this.getTodos({});
 }
 </script>
+
+<style lang="css" scoped>
+.slanted-bottom {
+	height: 100px;
+	-webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, -100% 0%);
+	clip-path: polygon(0% 0%, 100% 0%, 100% 100%, -100% 0%);
+}
+</style>

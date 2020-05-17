@@ -2,24 +2,24 @@
 	<main>
 		<div
 			class="list-group-item list-group-item-action d-flex align-items-center w-100"
-			v-for="(todo, index) in todos"
 			:key="`todo-${index}`"
+			v-for="(todo, index) in todos"
 		>
 			<div class="pr-3">
 				<input
+					@change="updateTodoInfo(todo, $event)"
 					:checked="todo.completed"
 					class="rounded-0"
-					@change="updateTodoInfo(todo, $event)"
 					type="checkbox"
 					:value="todo.id"
 				/>
 			</div>
 			<div class="flex-grow-1 text-left">
 				<quick-edit
-					v-model="todo.title"
-					:classes="vueQuickEditClasses"
 					buttonOkText="Update"
+					:classes="vueQuickEditClasses"
 					@close="updateTodoInfo(todo, $event)"
+					v-model="todo.title"
 					v-if="!todo.completed"
 				/>
 				<span class="text-muted" v-else>
@@ -28,11 +28,12 @@
 			</div>
 			<div>
 				<button
-					type="button"
+					aria-label="Delete todo"
 					class="btn btn-link"
+					@click="launchSpeedBump(todo)"
 					data-toggle="modal"
 					data-target="#speed-bump"
-					@click="launchSpeedBump(todo)"
+					type="button"
 				>
 					&times;
 				</button>
@@ -42,9 +43,9 @@
 </template>
 
 <script>
-import { mapState, mapActions, mapMutations } from 'vuex';
+import { mapActions, mapMutations, mapState } from 'vuex';
 import QuickEdit from 'vue-quick-edit';
-import EventBus from '../helpers/event-bus';
+import EventBus from '@/helpers/event-bus';
 
 export default {
 	data() {
@@ -88,6 +89,8 @@ function launchSpeedBump(todo) {
 		return;
 	}
 
+	this.SHOW_SPEED_BUMP(true);
+
 	this.SET_SPEED_BUMP({
 		id: 'delete-todo',
 		content: 'This will delete the todo permanately.',
@@ -95,7 +98,6 @@ function launchSpeedBump(todo) {
 		saveText: 'I understand, Delete todo'
 	});
 
-	this.SHOW_SPEED_BUMP(true);
 	this.toBeDeleted = todo;
 }
 
@@ -119,6 +121,7 @@ function updateTodoInfo(todo, event) {
 
 	todo.title = typeof event === 'string' ? event : todo.title;
 	todo.completed = event.target ? event.target.checked : todo.completed;
+
 	this.updateTodo(todo);
 }
 </script>
