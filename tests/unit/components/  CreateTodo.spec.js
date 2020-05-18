@@ -19,33 +19,23 @@ describe('App.vue', () => {
 			actions
 		});
 
-		wrapper = shallowMount(App, { store, localVue });
+		wrapper = shallowMount(App, {
+			store,
+			localVue,
+			attachToDocument: true
+		});
 	});
-	describe('Actions:', () => {
-		it('dispatches "getTodos" when input event value is "input"', () => {
-			const wrapper = shallowMount(App, { store, localVue });
 
-			expect(wrapper.get('.nav-container'));
+	describe('Mounted:', () => {
+		it('Sets the focust to the "input"', () => {
+			const input = wrapper.find({ ref: 'todoTitleInput' }).element;
+			expect(input).toBe(document.activeElement);
 		});
 	});
 
 	describe('Data:', () => {
-		it('dispatches "getTodos" when input event value is "input"', () => {
+		it('does not show the search form by default', () => {
 			expect(wrapper.vm.showSearchForm).toBe(false);
 		});
 	});
-
-	// it('does not dispatch "actionInput" when event value is not "input"', () => {
-	// 	const wrapper = shallowMount(App, { store, localVue });
-	// 	const input = wrapper.find('input');
-	// 	input.element.value = 'not input';
-	// 	input.trigger('input');
-	// 	expect(actions.actionInput).not.toHaveBeenCalled();
-	// });
-
-	// it('calls store action "actionClick" when button is clicked', () => {
-	// 	const wrapper = shallowMount(App, { store, localVue });
-	// 	wrapper.find('button').trigger('click');
-	// 	expect(actions.actionClick).toHaveBeenCalled();
-	// });
 });

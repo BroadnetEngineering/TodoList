@@ -39,7 +39,7 @@
     {
       "id": "ba686783-7647-4bed-8a53-0c51761f4075",
       "created": "2020-05-17T04:57:57.205Z",
-      "completed": false,
+      "completed": true,
       "title": "Change tires"
     },
     {
@@ -76,7 +76,7 @@
       "id": "00ec24b1-e267-4be4-ae46-be0c37b60d48",
       "created": "2020-05-17T05:04:16.544Z",
       "completed": false,
-      "title": "Create todo app"
+      "title": "Create todo app dfsdf"
     },
     {
       "id": "51b6e516-a6b0-41de-9315-19578a58e221",

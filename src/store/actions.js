@@ -6,15 +6,33 @@ import store from './';
 
 const DB_URL = 'http://localhost:3000';
 
-export const getTodos = ({ state, commit }, { searchTerm }) => {
-	// TODO: Refactor the search to have it's own action (conflicts with sorting)
-	const sharedParams = `&_limit=${state.pagination.rowsPerPage}`;
-	const defaultParams = `?_sort=created&_order=desc&_page=${state.pagination.currentPage}`;
-	const serarchParams = `?q=${searchTerm}&_limit=${state.pagination.rowsPerPage}`;
-	const requestParams = searchTerm ? serarchParams : defaultParams;
+export const searchTodos = ({ state, commit }, searchTerm = '') => {
+	return axios
+		.get(`${DB_URL}/todos?q=${searchTerm}&_sort=created&_order=desc&_page=${state.pagination.currentPage}`)
+		.then(response => {
+			const totalCount = response.headers['x-total-count'];
+			const totalResults = parseInt(totalCount) || response.data.length;
+
+			commit(mutationTypes.SET_TODOS, response.data);
+			commit(mutationTypes.SET_TOTAL_RESULTS, totalResults);
+
+			if (totalResults === 0) {
+				commit(mutationTypes.SET_MESSAGE, {
+					type: 'danger',
+					content: messages.REFINE_SEARCH
+				});
+			}
+		})
+		.catch(error => {
+			handleErrors(error);
+		});
+};
+
+export const getTodos = ({ state, commit }) => {
+	const params = `?_sort=created&_order=desc&_page=${state.pagination.currentPage}&_limit=${state.pagination.rowsPerPage}`;
 
 	return axios
-		.get(`${DB_URL}/todos${requestParams}${sharedParams}`)
+		.get(`${DB_URL}/todos${params}`)
 		.then(response => {
 			const totalCount = response.headers['x-total-count'];
 			const totalResults = parseInt(totalCount) || response.data.length;

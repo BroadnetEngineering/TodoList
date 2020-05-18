@@ -1,5 +1,5 @@
-<template
-	><div class="nav-container">
+<template>
+	<div class="nav-container">
 		<div class="slanted-top bg-primary"></div>
 		<nav
 			class="navbar shadow navbar-expand-lg navbar-dark bg-primary py-3 pr-3 align-items-center"
@@ -7,19 +7,19 @@
 			<span class="navbar-brand">+ Add todo: </span>
 			<div class="flex-grow-1">
 				<input
-					type="text"
-					ref="todoTitleInput"
 					class="form-control w-100 rounded-0 text-primary"
-					placeholder=" Enter title ..."
-					v-model="todo.title"
 					@keyup.enter="addTodo"
+					placeholder=" Enter title ..."
+					ref="todoTitleInput"
+					type="text"
+					v-model="todo.title"
 				/>
 			</div>
 			<div class="btn-group-sm">
 				<button
 					@click="addTodo"
-					type="submit"
 					class="btn btn-light text-primary ml-2 rounded-0"
+					type="submit"
 				>
 					Add
 				</button>

@@ -1,5 +1,6 @@
 module.exports = {
 	preset: '@vue/cli-plugin-unit-jest',
+	coverageReporters: ['text'],
 	collectCoverage: true,
 	collectCoverageFrom: [
 		'src/**/*.{js,vue}',

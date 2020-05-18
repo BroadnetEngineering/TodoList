@@ -34,9 +34,7 @@
 					data-toggle="modal"
 					data-target="#speed-bump"
 					type="button"
-				>
-					&times;
-				</button>
+				>&times;</button>
 			</div>
 		</div>
 	</main>

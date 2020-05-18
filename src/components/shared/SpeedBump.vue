@@ -1,11 +1,10 @@
 <template>
 	<div
+		:aria-hidden="showSpeedBump"
 		class="modal fade"
 		id="speed-bump"
-		tabindex="-1"
 		role="dialog"
-		aria-labelledby="speed-bumpTitle"
-		:aria-hidden="showSpeedBump"
+		tabindex="-1"
 	>
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content rounded-0">

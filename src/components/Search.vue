@@ -1,5 +1,6 @@
 <template>
 	<div class="search-wrapper w-100 d-flex align-items-center">
+		<div class="mr-3">Search:</div>
 		<div class="search-input w-100">
 			<input
 				class="form-control rounded-0 w-100"
@@ -28,7 +29,7 @@ export default {
 		...mapState(['todos'])
 	},
 	methods: {
-		...mapActions(['getTodos']),
+		...mapActions(['searchTodos']),
 		...mapMutations(['SET_CURRENT_PAGE', 'SET_MESSAGE']),
 		handleSearch() {
 			if (this.timeout) {
@@ -38,8 +39,6 @@ export default {
 			this.timeout = setTimeout(() => {
 				if (!this.searchText) {
 					this.SET_CURRENT_PAGE(1);
-
-					return;
 				}
 
 				if (this.searchText.length > globals.SEARCH_TEXT_LIMIT) {
@@ -51,10 +50,12 @@ export default {
 					return;
 				}
 
-				const filterdSearchTerm = this.searchText
-					.replace(/[^a-zA-Z0-9 ]/g, '');
+				const filterdSearchTerm = this.searchText.replace(
+					/[^a-zA-Z0-9 ]/g,
+					''
+				);
 
-				this.getTodos({ searchTerm: filterdSearchTerm });
+				this.searchTodos(filterdSearchTerm);
 			}, 500);
 		}
 	},
