@@ -5,7 +5,7 @@ function TodoTask({ todo }) {
         <React.Fragment style={{ display: "flex" }}>
             <input type="checkbox" />
             <li>{ todo.task }</li>
-            <button>Delete</button>
+            <button>X</button>
         </React.Fragment>
     )
 }
