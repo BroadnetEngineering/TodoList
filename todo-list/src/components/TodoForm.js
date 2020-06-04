@@ -1,10 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
-function TodoForm() {
+
+function TodoForm({ addTodo }) {
+        const [todo, setTodo] = useState({
+          id: "",
+          task: "",
+          status: false
+        });
+
+    function handleTaskInput(e) {
+        setTodo({ ...todo, task: e.target.value });
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        if (todo.task.trim()) {
+          addTodo({ ...todo, id: uuidv4() });
+          setTodo({ ...todo, task: "" });
+        }
+      }
+
     return (
-        <div>
-            <p>Todo Form</p>
-        </div>
+        <form onSubmit={ handleSubmit }>
+            <input
+                name="task"
+                type="text" 
+                value={ todo.task }
+                onChange= { handleTaskInput }
+            />
+            <button type="submit">Submit</button>
+        </form>
     )
 }
 
