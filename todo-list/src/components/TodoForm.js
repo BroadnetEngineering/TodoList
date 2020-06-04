@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import { v4 as uuidv4 } from 'uuid';
-
 import { Button, TextField } from '@material-ui/core';
-
-
+import { v4 as uuidv4 } from 'uuid';
 
 function TodoForm({ addTodo }) {
         const [todo, setTodo] = useState({
@@ -37,7 +34,7 @@ function TodoForm({ addTodo }) {
             />
             <Button type="submit">Add</Button>
         </form>
-    )
+    );
 }
 
 export default TodoForm;

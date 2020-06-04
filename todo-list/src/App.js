@@ -1,22 +1,21 @@
-import Typography from "@material-ui/core/Typography";
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import Typography from "@material-ui/core/Typography";
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 
-
-const LOCAL_STORAGE_KEY = "todo-list-storage"
+const LOCAL_STORAGE_KEY = "todo-list-storage";
 
 function App() {
 
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState([]);
 
   useEffect(() => {
     const storageTodos =  JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
     if (storageTodos) {
       setTodos(storageTodos);
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
@@ -33,7 +32,7 @@ function App() {
           return {
             ...todo,
             completed: !todo.completed
-          };
+          }
         }
         return todo;
       })
@@ -46,9 +45,7 @@ function App() {
 
   return (
     <div className="App">
-        <Typography  
-          variant="h1"
-        >
+        <Typography variant="h1">
           Todo List
         </Typography>
         <TodoList 

@@ -1,7 +1,6 @@
 import React from "react";
-import TodoTask from "./TodoTask";
 import { List } from '@material-ui/core';
-
+import TodoTask from "./TodoTask";
 
 function TodoList({ todos, toggleComplete, removeTodo }) {
     return (

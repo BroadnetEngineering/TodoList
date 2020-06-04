@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Checkbox, ListItem, IconButton, Typography } from '@material-ui/core';
 import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded';
 
@@ -10,7 +9,7 @@ function TodoTask({ todo, toggleComplete, removeTodo }) {
     }
 
     function handleRemoveClick() {
-        removeTodo(todo.id)
+        removeTodo(todo.id);
     }
 
     return (
@@ -34,7 +33,7 @@ function TodoTask({ todo, toggleComplete, removeTodo }) {
                 <DeleteRoundedIcon />
             </IconButton>
         </ListItem>
-    )
+    );
 }
 
 export default TodoTask;
