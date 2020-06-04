@@ -15,7 +15,6 @@ function TodoTask({ todo, toggleComplete, removeTodo }) {
     return (
         <ListItem style={{ display: "flex" }}>
             <Checkbox
-                defaultChecked
                 color="primary"
                 inputProps={{ 'aria-label': 'secondary checkbox' }}
                 checked={ todo.completed }
