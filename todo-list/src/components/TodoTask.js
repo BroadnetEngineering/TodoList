@@ -1,9 +1,12 @@
 import React from "react";
 
-function TodoTask({ todo, toggleStatus, removeTodo }) {
+import { Checkbox, ListItem, IconButton, Typography } from '@material-ui/core';
+import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded';
+
+function TodoTask({ todo, toggleComplete, removeTodo }) {
     
     function handleStatusClick() {
-        toggleStatus(todo.id)
+        toggleComplete(todo.id);
     }
 
     function handleRemoveClick() {
@@ -11,21 +14,28 @@ function TodoTask({ todo, toggleStatus, removeTodo }) {
     }
 
     return (
-        <React.Fragment style={{ display: "flex" }}>
-            <input 
-                type="checkbox"
+        <ListItem style={{ display: "flex" }}>
+            <Checkbox
+                defaultChecked
+                color="primary"
+                inputProps={{ 'aria-label': 'secondary checkbox' }}
+                checked={ todo.completed }
                 onClick={ handleStatusClick } 
             />
-            <li
+            <Typography
+                variant="body1"
                 style={{
                     textDecoration: todo.completed ? "line-through" : null
                 }}
             >
                 { todo.task }
-            </li>
-            <button onClick={ handleRemoveClick }>Delete</button>
-        </React.Fragment>
+            </Typography>
+            <IconButton onClick={ handleRemoveClick } >
+                <DeleteRoundedIcon />
+            </IconButton>
+        </ListItem>
     )
 }
 
 export default TodoTask;
+

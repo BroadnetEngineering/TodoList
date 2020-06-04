@@ -1,7 +1,9 @@
+import Typography from "@material-ui/core/Typography";
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
+
 
 const LOCAL_STORAGE_KEY = "todo-list-storage"
 
@@ -24,18 +26,18 @@ function App() {
     setTodos([todo, ...todos]);
   }
 
-  function toggleStatus(id) {
+  function toggleComplete(id) {
     setTodos(
       todos.map(todo => {
         if (todo.id === id) {
           return {
-            ...todo, 
-            completed: !todo.status
+            ...todo,
+            completed: !todo.completed
           };
         }
         return todo;
       })
-    )
+    );
   }
 
   function removeTodo(id) {
@@ -44,15 +46,17 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <p>Todo List</p>
-        <TodoForm addTodo={ addTodo } />
+        <Typography  
+          variant="h1"
+        >
+          Todo List
+        </Typography>
         <TodoList 
           todos={ todos } 
-          toggleStatus={ toggleStatus }
+          toggleComplete={ toggleComplete }
           removeTodo={ removeTodo }
         />
-      </header>
+        <TodoForm addTodo={ addTodo } />
     </div>
   );
 }

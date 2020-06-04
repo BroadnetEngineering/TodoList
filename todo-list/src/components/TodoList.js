@@ -1,18 +1,20 @@
 import React from "react";
 import TodoTask from "./TodoTask";
+import { List } from '@material-ui/core';
 
-function TodoList({ todos, toggleStatus, removeTodo }) {
+
+function TodoList({ todos, toggleComplete, removeTodo }) {
     return (
-        <ul>
+        <List>
             {todos.map(todo => (
                 <TodoTask
                     key = { todo.id }
                     todo = { todo }
-                    toggleStatus = { toggleStatus }
+                    toggleComplete = { toggleComplete }
                     removeTodo = { removeTodo }
                 />
             ))}
-        </ul>
+        </List>
     );
 }
 
