@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>To-Do's</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    </head>
+    <body>
+        <div class="bgWrapper one">
+            <div class="settings">
+                <i class="fas fa-cog"></i>
+                <div class="menu">
+                    <div class="theme one selected"></div>
+                    <div class="theme two"></div>
+                    <div class="theme three"></div>
+                    <div class="theme four"></div>
+                    <div class="theme five"></div>
+                    <div class="theme six"></div>
+                    <div class="theme seven"></div>
+                    <div class="theme eight"></div>
+                    <div class="theme nine"></div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="addTask">
+                    <input type="text" class="txtInput" placeholder="Add a To-Do">
+                    <i class="fas fa-plus-circle iconAdd"></i>
+                </div>
+                <div class="todos" id="sortable">
+                    <h3 class="header">TO-DO's</h3>
+                </div>
+                <div class="done">
+                    <h3 class="doneHead">DONE</h3>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            // Task Management (add, edit, delete)
+            $(function() {
+                function taskMgmt() {
+                    //Create Task
+                    var task = $("<div class='task'></div>").text($('.txtInput').val());
+                    
+                    //Delete Task
+                    var del = $("<i class='fas fa-trash-alt delete'></i>").click(function(){
+                        var p = $(this).parent();
+                        p.fadeOut(function(){
+                            p.remove();
+
+                            if($(".done").find(".task").length === 0) {
+                                $(".header").fadeOut();
+                            }
+                        });
+                    });
+
+                    //Complete Task
+                    var check = $("<i class='fas fa-check check'></i>").click(function(){
+                        var p = $(this).parent();
+                        $(".done .header").fadeIn();
+                        p.fadeOut(function(){
+                            $(".done").append(p);
+                            p.fadeIn();
+                        });
+                        $(this).remove();
+                        edit.remove();
+                    });
+
+                    //Edit Task Name
+                    var edit = $("<i class='fas fa-pencil-alt edit'></i>").click(function(){
+                        var par = $(this).parent();
+                        var pWrap = par.find($(".wrap"));
+                        var pTxt = pWrap.text();
+                        if(pWrap.children('input').length == 0) {
+                            par.find($("i")).hide();
+                            var inputbox = "<input type='text' class='taskName' value=\""+pTxt+"\">";
+
+                            pWrap.html(inputbox);
+                            $("input.taskName").focus().select();
+
+                            $("input.taskName").on("keyup", function(e) {
+                                if(e.which == 13 && $(this).val() != "") {
+                                    var value = $(this).val();
+                                    pWrap.text(value);
+                                    par.find($("i")).show();
+                                }
+                            })
+                        }
+                    });
+
+                    //Wrap task name in span to target for Edit + append icon buttons
+                    task.wrapInner("<span class='wrap'></span>").append(del,edit,check);
+                    //Add Task to To-Do's List
+                    $(".todos").append(task);
+                    //Clear input
+                    $(".txtInput").val("");
+                }
+
+                //add task on enter 
+                $(".txtInput").on("keyup",function(e){
+                    if(e.which == 13 && $(".txtInput").val() != "") taskMgmt();
+                });
+
+                //add task on button click
+                $(".iconAdd").on("click", function(e) {
+                    if($(".txtInput").val() != "") taskMgmt();
+                });
+
+                //jQuery UI call for sorting To-Do's
+                $("#sortable").sortable();
+                $("#sortable").disableSelection();
+            });
+
+            //Show themes menu
+            $(".settings i").click(function() {
+                if($(".menu").is(":visible")) {
+                    $(".menu").fadeOut();
+                } else {
+                    $(".menu").fadeIn();
+                }
+            });
+
+            //Change background based on theme selection
+            $(".theme").click(function() {
+                $(".theme").removeClass("selected");
+                $(this).addClass("selected");
+                $(".bgWrapper").attr("class", "bgWrapper");
+
+                if($(this).hasClass("one")) {
+                    $(".bgWrapper").addClass("one");
+                } else if($(this).hasClass("two")) {
+                    $(".bgWrapper").addClass("two");
+                } else if($(this).hasClass("three")) {
+                    $(".bgWrapper").addClass("three");
+                } else if($(this).hasClass("four")) {
+                    $(".bgWrapper").addClass("four");
+                } else if($(this).hasClass("five")) {
+                    $(".bgWrapper").addClass("five");
+                } else if($(this).hasClass("six")) {
+                    $(".bgWrapper").addClass("six");
+                } else if($(this).hasClass("seven")) {
+                    $(".bgWrapper").addClass("seven");
+                } else if($(this).hasClass("eight")) {
+                    $(".bgWrapper").addClass("eight");
+                } else if($(this).hasClass("nine")) {
+                    $(".bgWrapper").addClass("nine");
+                } 
+            });
+
+            //clicking outside the menu will close it
+            $(document).click(function(event) {
+                if (!$(event.target).closest(".settings").length) {
+                    $(".settings").find(".menu").fadeOut();
+                }
+            });
+
+        </script>
+    </body>
+</html>
