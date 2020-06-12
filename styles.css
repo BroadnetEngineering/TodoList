@@ -90,8 +90,10 @@
     width: 100%;
 }
 
-.txtInput::placeholder {
-    color: #fff;
+.txtInput[type="placeholder"],
+.txtInput::placeholder,
+.txtInput::-webkit-input-placeholder {
+    color: #fff !important;
     font-style: italic;
 }
 
