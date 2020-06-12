@@ -1,7 +1,10 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
     <head>
-        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>To-Do's</title>
         <link rel="stylesheet" href="styles.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
@@ -52,7 +55,7 @@
                             p.remove();
 
                             if($(".done").find(".task").length === 0) {
-                                $(".header").fadeOut();
+                                $(".doneHead").fadeOut();
                             }
                         });
                     });
@@ -60,7 +63,7 @@
                     //Complete Task
                     var check = $("<i class='fas fa-check check'></i>").click(function(){
                         var p = $(this).parent();
-                        $(".done .header").fadeIn();
+                        $(".doneHead").fadeIn();
                         p.fadeOut(function(){
                             $(".done").append(p);
                             p.fadeIn();
