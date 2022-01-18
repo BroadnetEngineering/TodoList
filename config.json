@@ -1,0 +1,32 @@
+{
+    "domain"     : "http://your-domain.com",
+    "reactTitle" : "Todo List",
+    "databaseOn" : true,
+    "database" : {
+        "type" : "mysql",
+        "host" : "localhost",
+        "db"   : "admin_rza",
+        "user" : "admin_rza_app",
+        "pass" : "n!kHqQuQwD1"
+    },
+    "css" : [
+        "<link rel='stylesheet' href='https://unpkg.com/purecss@2.0.6/build/pure-min.css' crossorigin>",
+        "<link rel='stylesheet' href='/assets/css/github-markdown-dark.css'>",
+        "<link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/agate.min.css'>",
+        "<link rel='stylesheet' href='/assets/css/style.css'>"
+    ],
+    "scripts" : [
+        "<script src='https://code.jquery.com/jquery-3.6.0.min.js' crossorigin='anonymous'></script>",
+        "<script src='https://kit.fontawesome.com/2ed00b3ff5.js' crossorigin='anonymous'></script>",
+        "<script src='https://unpkg.com/react@17/umd/react.production.min.js' crossorigin></script>",
+        "<script src='https://unpkg.com/react-dom@17/umd/react-dom.production.min.js' crossorigin></script>",
+        "<script src='https://unpkg.com/react-router-dom@5.1.0/umd/react-router-dom.min.js' crossorigin></script>",
+        "<script src='https://unpkg.com/@babel/standalone/babel.min.js'></script>",
+        "<script src='https://cdnjs.cloudflare.com/ajax/libs/markdown-it/12.3.2/markdown-it.min.js'></script>",
+        "<script src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js'></script>"
+    ],
+    "reactComponents" : [
+        "<script src='/components/TodoList.js' type='text/babel'></script>",
+        "<script src='/components/CinkoMvcApp.js' type='text/babel'></script>"
+    ]
+}
