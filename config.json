@@ -5,9 +5,9 @@
     "database" : {
         "type" : "mysql",
         "host" : "localhost",
-        "db"   : "admin_rza",
-        "user" : "admin_rza_app",
-        "pass" : "n!kHqQuQwD1"
+        "db"   : "some_db",
+        "user" : "some_user",
+        "pass" : "some_password"
     },
     "css" : [
         "<link rel='stylesheet' href='https://unpkg.com/purecss@2.0.6/build/pure-min.css' crossorigin>",
