@@ -1,21 +1,23 @@
-## Todo App
+# Broadnet Todo List
+## Corey Cinkosky &bull; 01/17/2022 &bull; [Todo Demo](http://todo.redzoneassault.com/)
+This is running on my own MVC Framework: **CinkoMVC**
+ * CinkoMVC [Github](https://github.com/ccinkosky/CinkoMVC)
+ * CinkoMVC [Demo](https://mvc.redzoneassault.com)
 
-As a potential employee of Broadnet we would like to be able to gauge your programming skill and how you approach a development task.
+## Install
+Load the app up and make sure that the website domain is pointing to the **public** folder.
 
-##### What We Expect
+I used a MySQL (type: "mysql") database, but you should be able to use any database supported by PDO. You can set the database credentials in the **config.json** file.
 
-* You may use the language of your choice.
-* The frontend portion of your app is entirely freeform.
-* If you use MySQL or similar, you must provide a SQL script to create the schema as part of your pull request.
-* Your app must support creating, reading, updating, and deleting of todo list items.
+You'll need to create the table **todo_list**, SQL to create the table is in **todo_list.sql**.
 
-##### Tips
+Once that is setup, the app should work as expected.
 
-* Quality over quantity!
-* Do what you do everyday, we want to see you're development style.
-* Feel free to think outside the box!
+## Main Scripts
+The main code for this app is here:
+ * **public/components/TodoList.js** : This is the React Component that makes up the user interface. It sends requests to the server to add, remove, update and complete todo list items.
+ * **controllers/TodoController.php** : This is the controller that receivs the POST requests from the user interface and determines which actions should be taken on the **todo_list** table in the database.
+ * **models/TodoListModel.php** : This is the model that actually communicates with the database. It has the functions to add, remove, update and complete records in the **todo_list** table.
 
-##### What to Do When You Are Done
-
-* Assuming you forked the repository, send us a pull request.
-* Alternatively, zip up your submission and email us.
+## App Function
+This app allows you to add items to a todo list. Enter your todo list item into the input field and click submit to add a todo list item. You can click the checkbox next to the todo list item to complete it. You can click the delete (trash can) to delete the todo list item. You can edit the todo list item directly where it's at. When done editing, click the save button to save your changes.
