@@ -18,3 +18,6 @@ The main code for this app is here:
  * **public/components/TodoList.js** : This is the React Component that makes up the user interface. It sends requests to the server to add, remove, update and complete todo list items.
  * **controllers/TodoController.php** : This is the controller that receivs the POST requests from the user interface and determines which actions should be taken on the **todo_list** table in the database.
  * **models/TodoListModel.php** : This is the model that actually communicates with the database. It has the functions to add, remove, update and complete records in the **todo_list** table.
+
+## App Function
+This app allows you to add items to a todo list. Enter your todo list item into the input field and click submit to add a todo list item. You can click the checkbox next to the todo list item to complete it. You can click the delete (trash can) to delete the todo list item. You can edit the todo list item directly where it's at. When done editing, click the save button to save your changes.
