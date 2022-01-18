@@ -2,7 +2,10 @@ class TodoList extends React.Component {
 
     constructor (props) {
         super(props);
-        this.state = { data : [] };
+        this.state = { 
+            data : [],
+            notification : "Saved!"
+        };
         this.updateTodoList = this.updateTodoList.bind(this);
         this.addTodoListItem = this.addTodoListItem.bind(this);
         this.deleteTodoListItem = this.deleteTodoListItem.bind(this);
@@ -90,6 +93,10 @@ class TodoList extends React.Component {
                 })
             };
             const res = await fetch("/api/todo/list", requestOptions);
+            $(".todo-notification").show();
+            setTimeout(function(){
+                $(".todo-notification").hide();
+            },10000);
             this.updateTodoList();
         } catch (e) {
             console.error(e);
@@ -167,6 +174,13 @@ class TodoList extends React.Component {
 
     render () {
         return (
+            <>
+            <div className="todo-notification">
+                <div className="close-notification" onClick={()=>$(".todo-notification").hide()}>
+                    <i className="fas fa-window-close" />
+                </div>
+                {this.state.notification}
+            </div>
             <div className="component-container">
                 <div className="splash-container">
                     <div className="splash">
@@ -210,6 +224,7 @@ class TodoList extends React.Component {
                     </div>
                 </div>
             </div>
+            </>
         )
     }
 }
