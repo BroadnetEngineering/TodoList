@@ -44,7 +44,7 @@ export default class List extends React.Component {
             body: JSON.stringify(requestData)
         }
 
-        fetch(process.env.MIX_API_URL + '/api/list/' + requestData.id, requestBody)
+        fetch('/api/list/' + requestData.id, requestBody)
             .then(this.setState({
                 delete: true
             }));   
@@ -66,14 +66,16 @@ export default class List extends React.Component {
             return '';
         } else {
             return (
-                <div className='component-container'>
-                    <h2>List:</h2>
-                    <p>Name: {this.state.name}</p>
-                    <p>Description: {this.state.description}</p>
-                    <p>Status: {this.state.status}</p>
-
-                    <input type='submit' value='Update List' onClick={this.updateList}></input>
-                    <input type='submit' value='Delete List' onClick={this.deleteList}></input>
+                <div className='list-component-container'>
+                    <div className='list-button-container'>
+                        <input className='list-button' type='submit' value='Update' onClick={this.updateList}></input>
+                        <input className='list-button' type='submit' value='Delete' onClick={this.deleteList}></input>
+                    </div>
+                    <div className='list-component-header'>
+                        <h2 className='list-component-name'>{this.state.name}</h2>
+                    </div>
+                    <div className='list-component-status'>Current Status: {this.state.status}</div>
+                    <p className='list-component-description'>{this.state.description}</p>
                 </div>
             );
         }

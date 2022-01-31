@@ -34,7 +34,7 @@ export default class CreateForm extends React.Component {
             body: JSON.stringify(requestData)
         }
 
-        fetch(process.env.MIX_API_URL + '/api/list', requestBody)
+        fetch('/api/list', requestBody)
             .then(() => {
                 this.setState({
                     redirect: true
@@ -56,21 +56,29 @@ export default class CreateForm extends React.Component {
     
     render = () => {
         {return this.state.redirect ? <ListTable /> : 
-            <div>
+            <div className='list-component-container-form'>
                 <form onSubmit={this.handleForm}>
-                    <label>
-                        Describe your new List name:
-                        <input type='text' name='name' value={this.state.name} onChange={this.handleChange}></input>
-                    </label>
-                    <label>
-                        Describe your new List:
-                        <input type='text' name='description' value={this.state.description} onChange={this.handleChange}></input>
-                    </label>
-                    <label>
-                        What is your new List's current status?
-                        <input type='text' name='status' placeholder='To Do' value={this.state.status} onChange={this.handleChange}></input>
-                    </label>
-                    <input type='submit' value='Create new List'></input>
+                    <div className='form-component-container'>
+                        <div className='form-component'>
+                            <div className='form-field'>
+                                New list name:
+                            </div>
+                            <input type='text' name='name' value={this.state.name} onChange={this.handleChange}></input>
+                        </div>
+                        <div className='form-component'>
+                            <div className='form-field'>
+                                What's in your list?
+                            </div>
+                            <textarea className='form-textarea' rows='3' cols='30' name='description' value={this.state.description} onChange={this.handleChange}></textarea>
+                        </div>
+                        <div className='form-component'>
+                            <div className='form-field'>
+                                What is your list's current status?
+                            </div>
+                            <input type='text' name='status' placeholder='To Do' value={this.state.status} onChange={this.handleChange}></input>
+                        </div>
+                        <input className='create-form-button' type='submit' value='Create new List'></input>
+                    </div>
                 </form>
             </div>
         };

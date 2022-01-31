@@ -43,7 +43,7 @@ export default class UpdateForm extends React.Component {
             body: JSON.stringify(requestData)
         }
 
-        fetch(process.env.MIX_API_URL + '/api/list/' + requestBody.id, requestBody)
+        fetch('/api/list/' + requestBody.id, requestBody)
             .then(() => {
                 this.setState({
                     redirect: true
@@ -72,21 +72,29 @@ export default class UpdateForm extends React.Component {
                 status = {this.state.status}
             /> 
         : 
-            <div>
+            <div className='list-component-container'>
                 <form onSubmit={this.handleForm}>
-                    <label>
-                        Update the name of List {this.state.originalName}:
-                        <input type='text' name='name' value={this.state.name} onChange={this.handleChange}></input>
-                    </label>
-                    <label>
-                        Update the description of List {this.state.originalName}:
-                        <input type='text' name='description' value={this.state.description} onChange={this.handleChange}></input>
-                    </label>
-                    <label>
-                        What is the status of List {this.state.originalName}?
-                        <input type='text' name='status' placeholder='To Do' value={this.state.status} onChange={this.handleChange}></input>
-                    </label>
-                    <input type='submit' value='Update'></input>
+                    <div className='form-component-container'>
+                        <div className='form-component'>
+                            <div className='form-field'>
+                                Rename {this.state.originalName}:
+                            </div>
+                            <input type='text' name='name' value={this.state.name} onChange={this.handleChange}></input>
+                        </div>
+                        <div className='form-component'>
+                            <div className='form-field'>
+                                Update the description of List {this.state.originalName}:
+                            </div>
+                            <textarea className='form-textarea' rows='3' cols='30' name='description' value={this.state.description} onChange={this.handleChange}></textarea>
+                        </div>
+                        <div className='form-component'>
+                            <div className='form-field'>
+                                What is the status of List {this.state.originalName}?
+                            </div>
+                            <input type='text' name='status' placeholder='To Do' value={this.state.status} onChange={this.handleChange}></input>
+                        </div>
+                        <input className='create-form-button' type='submit' value='Update'></input>
+                    </div>
                 </form>
             </div>
         };

@@ -11,9 +11,11 @@ export default class Header extends React.Component {
     
     render = () => {
         return (
-            <div className = 'header'>
-                <h1><b>Spencer Dant's Super Duper Todo List App</b></h1>
-                <h4>For Broadnet</h4>
+            <div className='header'>
+                <div className='header-container'>
+                    <img className='logo' alt='Broadnet logo' src='/broadnet_logo.png'></img>
+                    <div className='header-title'>Spencer Dant's Todo List App</div>
+                </div>
             </div>
         )
     };

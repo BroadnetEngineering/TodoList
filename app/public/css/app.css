@@ -48,7 +48,7 @@
   --bs-white-rgb: 255, 255, 255;
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 33, 37, 41;
-  --bs-body-bg-rgb: 248, 250, 252;
+  --bs-body-bg-rgb: 178, 180, 181;
   --bs-font-sans-serif: "Nunito", sans-serif;
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
@@ -57,7 +57,7 @@
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.6;
   --bs-body-color: #212529;
-  --bs-body-bg: #f8fafc;
+  --bs-body-bg: #b2b4b5bf;
 }
 
 *,
@@ -601,7 +601,7 @@ progress {
 
 .img-thumbnail {
   padding: 0.25rem;
-  background-color: #f8fafc;
+  background-color: #b2b4b5bf;
   border: 1px solid #dee2e6;
   border-radius: 0.25rem;
   max-width: 100%;
@@ -2189,7 +2189,7 @@ progress {
   font-weight: 400;
   line-height: 1.6;
   color: #212529;
-  background-color: #f8fafc;
+  background-color: #b2b4b5bf;
   background-clip: padding-box;
   border: 1px solid #ced4da;
   -webkit-appearance: none;
@@ -2211,7 +2211,7 @@ progress {
 }
 .form-control:focus {
   color: #212529;
-  background-color: #f8fafc;
+  background-color: #b2b4b5bf;
   border-color: #86b7fe;
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
@@ -2409,7 +2409,7 @@ textarea.form-control-lg {
   font-weight: 400;
   line-height: 1.6;
   color: #212529;
-  background-color: #f8fafc;
+  background-color: #b2b4b5bf;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
@@ -2475,7 +2475,7 @@ textarea.form-control-lg {
   height: 1em;
   margin-top: 0.3em;
   vertical-align: top;
-  background-color: #f8fafc;
+  background-color: #b2b4b5bf;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -2577,10 +2577,10 @@ textarea.form-control-lg {
   outline: 0;
 }
 .form-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px #f8fafc, 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  box-shadow: 0 0 0 1px #b2b4b5bf, 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 .form-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #f8fafc, 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  box-shadow: 0 0 0 1px #b2b4b5bf, 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 .form-range::-moz-focus-outer {
   border: 0;
@@ -3978,8 +3978,8 @@ textarea.form-control-lg {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
-  background-color: #f8fafc;
-  border-color: #dee2e6 #dee2e6 #f8fafc;
+  background-color: #b2b4b5bf;
+  border-color: #dee2e6 #dee2e6 #b2b4b5bf;
 }
 .nav-tabs .dropdown-menu {
   margin-top: -1px;
@@ -4673,7 +4673,7 @@ textarea.form-control-lg {
   font-size: 0.9rem;
   color: #212529;
   text-align: left;
-  background-color: #f8fafc;
+  background-color: #b2b4b5bf;
   border: 0;
   border-radius: 0;
   overflow-anchor: none;
@@ -4724,7 +4724,7 @@ textarea.form-control-lg {
 }
 
 .accordion-item {
-  background-color: #f8fafc;
+  background-color: #b2b4b5bf;
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 .accordion-item:first-of-type {
@@ -11286,6 +11286,120 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-.hidden {
-  display: none;
+body {
+  background-image: url(/images/todolist_bkg.jpeg?2d589cb91ccedcac14c94cfb26990cef);
+}
+
+ul {
+  all: unset;
+}
+
+.header {
+  display: flex;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+.header .header-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 10px;
+}
+.header .header-container .header-title {
+  font-size: 24px;
+  font-weight: 600;
+}
+.header .header-container .logo {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.list-table .list-table-button-container {
+  width: 100%;
+  margin-top: 10px;
+}
+.list-table .list-table-button-container .list-table-button {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 25%;
+  width: 50%;
+  padding: 5px;
+  border: none;
+  font-size: 20px;
+}
+.list-table .list-table-button-container .list-table-button:hover {
+  background-color: #e6e5d6;
+}
+.list-table .list-table-button-container {
+  text-align: center;
+}
+
+.list, .list-component-container, .form-component-container {
+  width: 100%;
+}
+
+.list, .list-component-container-form {
+  padding: 10px 25%;
+}
+
+.list-component-container, .form-component-container {
+  background-color: #f8de59;
+  box-shadow: 10px 30px 50px -10px #191b1d;
+  width: 100%;
+  min-height: 250px;
+}
+@media (max-width: 768px) {
+  .list-component-container, .form-component-container {
+    min-height: 150px;
+  }
+}
+
+.list-component-container .list-component-name, .list-component-container .list-component-status, .list-component-container .list-component-description {
+  text-align: center;
+}
+.list-component-container .list-component-status, .list-component-container .list-component-description {
+  font-size: 20px;
+}
+@media (max-width: 768px) {
+  .list-component-container .list-component-status, .list-component-container .list-component-description {
+    font-size: 14px;
+  }
+}
+.list-component-container .list-button-container {
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+.list-component-container .list-button-container .list-button-update {
+  font-size: 20px;
+  min-width: 25%;
+}
+@media (max-width: 768px) {
+  .list-component-container .list-button-container .list-button-update {
+    font-size: 14px;
+    min-width: 15%;
+  }
+}
+.list-component-container .list-component-description {
+  overflow: scroll;
+}
+
+.form-component-container {
+  text-align: center;
+}
+.form-component-container .form-component {
+  text-align: center;
+  padding-top: 10px;
+}
+.form-component-container .form-component .form-textarea {
+  resize: none;
+  overflow-y: scroll;
+}
+.form-component-container .create-form-button {
+  margin: 10px;
+}
+
+.list-component-container:hover {
+  background-color: #e6e5d6;
+  box-shadow: 10px 30px 20px -10px #191b1d;
+  transform: rotate(1deg) translateX(-1%);
 }

@@ -15,7 +15,11 @@ export default class ListTable extends React.Component {
     }
 
     componentDidMount = () => {
-        fetch(process.env.MIX_API_URL + '/api/list')
+        if (document.getElementById('list-form')) {
+            document.getElementById('list-form').display = 'none';
+        }
+
+        fetch('/api/list')
             .then(response => response.json())
             .then(
                 (result) => {
@@ -48,14 +52,16 @@ export default class ListTable extends React.Component {
         const lists = this.state.lists;
 
         return (
-            <div>
-                <form method='GET' action='/newList'>
-                    <input type='submit' value='Create a New List'></input>
-                </form>
+            <div className='list-table'>
+                <div className='list-table-button-container'>
+                    <form method='GET' action='/newList'>
+                        <input className='list-table-button' type='submit' value='Start a New List'></input>
+                    </form>
+                </div>
                 <ul>
                     {lists.map(list => {
                         return (
-                            <div className = 'list-container'>
+                            <div className = 'list'>
                                 <List
                                     id = {list.id}
                                     name = {list.name}
